@@ -11,7 +11,7 @@ import { async } from '@angular/core/testing';
 })
 export class NavbarComponent implements OnInit {
   recipeList = false;
-  mobile = false;
+  isMenuOpen = false;
 
   isSmall$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Small)
     .pipe(

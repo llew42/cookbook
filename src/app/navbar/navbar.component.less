@@ -14,10 +14,12 @@ nav{
   position: relative;
   z-index: 5;
   .flex();
-  align-items: baseline;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: .5em;
     h1{
       margin-left: 1.15em;
-      margin-top: .35em;
+      margin-bottom: 0;
     }
     .flex-spacer{
       flex-grow: 1;
@@ -25,5 +27,8 @@ nav{
     }
     menu{
       .flex();
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-left: 1em;
     }
 }
