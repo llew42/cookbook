@@ -1,0 +1,29 @@
+@primaryColor: #c2185b;
+
+.boxShadow(){
+  box-shadow: 0 3px 5px -1px rgba(0,0,0,.2),0 6px 10px 0 rgba(0,0,0,.14),0 1px 18px 0 rgba(0,0,0,.12);
+}
+
+.flex(){
+  display: flex;
+}
+
+nav{
+  background: @primaryColor;
+  .boxShadow();
+  position: relative;
+  z-index: 5;
+  .flex();
+  align-items: baseline;
+    h1{
+      margin-left: 1.15em;
+      margin-top: .35em;
+    }
+    .flex-spacer{
+      flex-grow: 1;
+      -webkit-box-flex: 1;
+    }
+    menu{
+      .flex();
+    }
+}
