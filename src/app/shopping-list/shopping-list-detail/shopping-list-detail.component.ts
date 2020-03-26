@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShoppingListDetailComponent implements OnInit {
 
+  category = {
+    name: ['Vegetable', 'Fruit', 'Bakery', 'Dairy', 'Meat', 'Canned Goods', 'Desserts', 'Cookies', 'Cereal']
+  }
+
   constructor() { }
 
   ngOnInit(): void {
