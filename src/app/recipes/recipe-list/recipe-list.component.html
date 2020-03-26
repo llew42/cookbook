@@ -1,1 +1,11 @@
-<app-recipe-item></app-recipe-item>
+<button mat-button>New Recipe</button>
+<mat-card *ngFor="let recipe of recipes" class="recipe-card">
+  <mat-card-header>
+    <mat-card-title>{{recipe.name}}</mat-card-title>
+  </mat-card-header>
+  <figure>
+    <img mat-card-img src="{{recipe.imagePath}}" alt="Delicious Tacos">
+    <figcaption>Delicious Cheesy Tacos</figcaption>
+    <mat-card-content>{{recipe.description}}</mat-card-content>
+  </figure>
+</mat-card>

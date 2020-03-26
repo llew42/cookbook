@@ -1,1 +1,9 @@
-<p>recipe-detail works!</p>
+<article>
+  <header>
+    <h1>Your {{recipe.name}} Details</h1>
+  </header>
+  <p>{{recipe.instructions}}</p>
+  <ul *ngFor="let step of recipe.steps">
+    <li>{{step}}</li>
+  </ul>
+</article>

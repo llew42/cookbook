@@ -11,15 +11,14 @@ import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainComponent } from './main/main.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { MatGridListModule } from '@angular/material/grid-list';
 import { FooterComponent } from './footer/footer.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { NavbarComponent } from './navbar/navbar.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -38,13 +37,12 @@ import { NavbarComponent } from './navbar/navbar.component';
     BrowserModule,
     BrowserAnimationsModule,
     LayoutModule,
-    MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MatGridListModule,
     MatMenuModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
