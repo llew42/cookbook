@@ -1,2 +1,14 @@
-<p>Shopping List</p>
-<mat-divider></mat-divider>
+<div class="columns">
+  <div class="column">
+    <h1>Shopping List</h1>
+    <app-shopping-list-detail></app-shopping-list-detail>
+  </div>
+  <div class="column">
+    <mat-divider></mat-divider>
+    <mat-list>
+      <mat-list-item *ngFor="let ingredient of ingredients">
+        {{ingredient.name}} ({{ingredient.amount}})
+      </mat-list-item>
+    </mat-list>
+  </div>
+</div>

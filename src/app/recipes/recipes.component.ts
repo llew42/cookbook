@@ -4,9 +4,10 @@ import { Recipe } from './recipe.model';
 @Component({
   selector: 'app-recipes',
   templateUrl: './recipes.component.html',
-  styleUrls: ['./recipes.component.less']
+  styleUrls: ['./recipes.component.scss']
 })
 export class RecipesComponent implements OnInit {
+  selectedRecipe: Recipe;
 
   recipes: Recipe[];
 
@@ -19,4 +20,5 @@ export class RecipesComponent implements OnInit {
   getRecipes(){
     return this.recipes;
   }
+
 }

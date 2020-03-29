@@ -1,34 +1,25 @@
-<div class="field">
-  <label>Ingredient</label>
-  <div class="control">
-    <input type="text" placeholder="New ingredient">
+<div class="form-container">
+  <mat-form-field>
+    <input matInput placeholder="Name">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input type="number" matInput placeholder="Amount">
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput placeholder="Notes"></textarea>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Ingredient">
+      <mat-option value="option">Option</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div>
+    <button color="primary" mat-raised-button>Save</button>
+    <button mat-button color="info">Clear</button>
+    <button mat-button color="primary">Delete</button>
   </div>
 </div>
-<div class="field">
-  <label>Email</label>
-  <div class="control has-icons-left has-icons-right">
-    <input type="email" placeholder="Email input">
-    <span class="icon is-small is-left">
-      <i class="fas fa-envelope"></i>
-    </span>
-  </div>
-</div>
-<div class="field">
-  <label>Category</label>
-  <div class="control">
-    <div class="select">
-      <select>
-        <option *ngFor="let item of category.name" [value]="item">{{item}}</option>
-      </select>
-    </div>
-  </div>
-</div>
-<div class="field">
-  <label>Message</label>
-  <div class="control"></div>
-    <textarea class="textarea" placeholder="Textarea"></textarea>
-</div>
-<div class="field is-grouped">
-  <button mat-button>Submit</button>
-  <button mat-button>Cancel</button>
-</div>
+<br />

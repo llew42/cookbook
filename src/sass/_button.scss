@@ -1,0 +1,21 @@
+@use './base';
+
+.button-primary{
+  background-color: $primary;
+}
+
+.button-secondary{
+  background-color: $secondary;
+}
+
+.button-warn {
+  background-color: $warn;
+}
+
+.button-danger {
+  background-color: $danger;
+}
+
+.button-danger-alt {
+  background-color: $dangerAlt;
+}

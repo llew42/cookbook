@@ -1,9 +1,25 @@
+<figure>
+  <img mat-card-img src="{{recipe.imagePath}}" alt="Delicious Tacos">
+  <figcaption>Delicious Cheesy Tacos</figcaption>
+</figure>
 <article>
   <header>
     <h1>Your {{recipe.name}} Details</h1>
   </header>
-  <p>{{recipe.instructions}}</p>
-  <ul *ngFor="let step of recipe.steps">
-    <li>{{step}}</li>
+  <div class="recipe-dropdown">
+    <button mat-flat-button color="primary" [matMenuTriggerFor]='recipes'>Manage Recipe
+      <mat-icon>expand_more</mat-icon>
+    </button>
+  </div>
+  <mat-card-content>{{recipe.description}}</mat-card-content>
+  <mat-menu #recipes='matMenu'>
+    <a mat-menu-item>To Shopping List</a>
+    <a mat-menu-item>Edit Recipe</a>
+    <a mat-menu-item>Delete Recipe</a>
+  </mat-menu>
+  <p>{{recipe.description}}</p>
+  <ul>
+  <!-- <ul *ngFor="let step of recipe.steps"> -->
+    <li>step</li>
   </ul>
 </article>

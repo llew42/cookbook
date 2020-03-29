@@ -1,14 +1,10 @@
-@primaryColor: #c2185b;
-
-.flex(){
-  display: flex;
-}
+@import '../../styles';
 
 nav{
-  background: @primaryColor;
+  background: $primary;
   position: relative;
   z-index: 5;
-  .flex();
+  display: flex;
   align-items: center;
   flex-wrap: wrap;
   padding: .5em;
@@ -21,7 +17,7 @@ nav{
       -webkit-box-flex: 1;
     }
     menu{
-      .flex();
+      display: flex;
       margin-top: 0;
       margin-bottom: 0;
       padding-left: 1em;

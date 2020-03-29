@@ -1,0 +1,10 @@
+@use '../../../styles';
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container > * {
+  width: 35vw;
+}

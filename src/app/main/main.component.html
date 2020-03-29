@@ -1,12 +1,9 @@
-<!-- FIRST TWO COLUMNS -->
+<app-navbar (navSelected)="onNav($event)" class="mat-elevation-z8"></app-navbar>
 <div class="columns">
-  <app-recipe-list class="column"></app-recipe-list>
-  <app-recipe-detail class="column"></app-recipe-detail>
+  <app-recipes class="column" *ngIf="loadedNav === 'recipes'"></app-recipes>
 </div>
 <div class="columns">
-  <app-shopping-list-detail class="column"></app-shopping-list-detail>
-  <app-shopping-list class="column"></app-shopping-list>
+  <app-shopping-list class="column" *ngIf="loadedNav !== 'recipes'"></app-shopping-list>
 </div>
-  <!-- BOTTOM 2 COLUMNS -->
 
 

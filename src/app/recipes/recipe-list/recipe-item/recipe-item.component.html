@@ -1,9 +1,11 @@
-<h1>Ingredients needed</h1>
-<ul>
-  <li>Ground Beef</li>
-  <li>Salt, pepper</li>
-  <li>Red pepper</li>
-  <li>Diced jalepenos</li>
-  <li>Tortillas</li>
-  <li>Condiments</li>
-</ul>
+<a (click)="recipeClicked()"><mat-card class="recipe-card">
+  <mat-card-header>
+  <mat-card-title>{{recipe.name}}</mat-card-title>
+  </mat-card-header>
+  <figure>
+    <img mat-card-img src="{{recipe.imagePath}}" alt="Delicious Tacos">
+    <figcaption>Delicious Cheesy Tacos</figcaption>
+    <mat-card-content>{{recipe.description}}</mat-card-content>
+  </figure>
+</mat-card>
+</a>

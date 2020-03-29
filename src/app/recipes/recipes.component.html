@@ -1,2 +1,12 @@
-<!-- FIRST TWO COLUMNS -->
-<h1>What is going in Recipes component?</h1>
+<div class="columns">
+  <div class="column">
+    <app-recipe-list (recipeSelected)="selectedRecipe = $event" ></app-recipe-list>
+  </div>
+  <div class="column">
+    <!-- RENDER RECIPE DETAIL WITH CLICK FROM RECIPE ITEM -->
+    <app-recipe-detail *ngIf="selectedRecipe; else infoText" [recipe]="selectedRecipe"></app-recipe-detail>
+    <ng-template #infoText>
+      <p>Please select a recipe</p>
+    </ng-template>
+  </div>
+</div>
