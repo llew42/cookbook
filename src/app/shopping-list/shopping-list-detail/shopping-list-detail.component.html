@@ -1,23 +1,23 @@
 <div class="form-container">
   <mat-form-field>
-    <input matInput placeholder="Name">
+    <input matInput placeholder="Name" #nameInput>
   </mat-form-field>
 
   <mat-form-field>
-    <input type="number" matInput placeholder="Amount">
+    <input type="number" matInput placeholder="Amount" #amountInput>
   </mat-form-field>
 
   <mat-form-field>
     <textarea matInput placeholder="Notes"></textarea>
   </mat-form-field>
 
-  <mat-form-field>
+  <!-- <mat-form-field>
     <mat-select placeholder="Ingredient">
       <mat-option value="option">Option</mat-option>
     </mat-select>
-  </mat-form-field>
+  </mat-form-field> -->
   <div>
-    <button color="primary" mat-raised-button>Save</button>
+    <button color="primary" mat-raised-button (click)="onAddIngredient()">Add</button>
     <button mat-button color="info">Clear</button>
     <button mat-button color="primary">Delete</button>
   </div>

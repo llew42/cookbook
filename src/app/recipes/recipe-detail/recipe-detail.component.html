@@ -17,9 +17,7 @@
     <a mat-menu-item>Edit Recipe</a>
     <a mat-menu-item>Delete Recipe</a>
   </mat-menu>
-  <p>{{recipe.description}}</p>
   <ul>
-  <!-- <ul *ngFor="let step of recipe.steps"> -->
-    <li>step</li>
+    <li *ngFor="let ingredient of recipe.ingredients">{{ ingredient.name }} - {{ ingredient.amount }}</li>
   </ul>
 </article>

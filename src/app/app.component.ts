@@ -6,8 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'cookbook';
   loadedNav = 'recipes';
+  title = 'cookbook';
 
   onNav(navLink: string){
     this.loadedNav = navLink;

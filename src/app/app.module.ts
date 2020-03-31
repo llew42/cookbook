@@ -11,8 +11,9 @@ import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-// MODULES 
+// MODULES
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -24,6 +25,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { NgModule } from '@angular/core';
+
+// DIRECTIVES
+import { DropdownDirective } from './shared/dropdown.directive';
+import { ShoppingListService } from './shopping-list/shopping-list.service';
 
 
 
@@ -39,10 +44,12 @@ import { NgModule } from '@angular/core';
     MainComponent,
     FooterComponent,
     NavbarComponent,
+    DropdownDirective,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
     LayoutModule,
     MatButtonModule,
     MatSidenavModule,
@@ -54,7 +61,7 @@ import { NgModule } from '@angular/core';
     MatSelectModule,
     MatInputModule
   ],
-  providers: [],
+  providers: [ShoppingListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
