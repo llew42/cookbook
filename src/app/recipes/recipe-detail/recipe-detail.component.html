@@ -14,7 +14,7 @@
   <mat-card-content>{{recipe.description}}</mat-card-content>
   <mat-menu #recipes='matMenu'>
     <a mat-menu-item (click)="goToShoppingList()">Add Ingredients to Shopping List</a>
-    <a mat-menu-item>Edit Recipe</a>
+    <a mat-menu-item [routerLink]="['edit']">Edit Recipe</a>
     <a mat-menu-item>Delete Recipe</a>
   </mat-menu>
   <ul>

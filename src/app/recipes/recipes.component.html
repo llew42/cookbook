@@ -1,14 +1,7 @@
 <div class="column">
+  <button mat-button class="button-primary" [routerLink]="['new']">Add New Recipe</button>
   <app-recipe-list></app-recipe-list>
 </div>
 <div class="column">
   <router-outlet></router-outlet>
 </div>
-
-  <!-- <div class="column"> -->
-    <!-- RENDER RECIPE DETAIL WITH CLICK FROM RECIPE ITEM -->
-    <!-- <app-recipe-detail [routerLink]="['/recipe']" *ngIf="selectedRecipe; else infoText" [recipe]="selectedRecipe"></app-recipe-detail>
-    <ng-template #infoText>
-      <p>Please select a recipe</p>
-    </ng-template> -->
-  <!-- </div> -->

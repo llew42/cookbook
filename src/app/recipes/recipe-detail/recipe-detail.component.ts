@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -17,7 +17,7 @@ export class RecipeDetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.params
       .subscribe(
-        (params: Params) => {
+        (params: ParamMap) => {
           this.id = +params['id'];
           this.recipe = this.recipeService.getRecipe(this.id);
         }
@@ -30,7 +30,7 @@ export class RecipeDetailComponent implements OnInit {
 
   showRecipe() {
     this.route.params.subscribe(
-      (params: Params) => {
+      (params: ParamMap) => {
         this.id = +params['id'];
         this.recipeService.getRecipe(this.id);
       }

@@ -1,5 +1,4 @@
-import { Injectable, OnInit, EventEmitter } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Injectable, OnInit } from '@angular/core';
 import { Recipe } from './recipe.model';
 import { Ingredient } from '../models/ingredient.model';
 import { ShoppingListService } from '../shopping-list/shopping-list.service';
@@ -8,7 +7,6 @@ import { ShoppingListService } from '../shopping-list/shopping-list.service';
   providedIn: 'root'
 })
 export class RecipeService implements OnInit {
-  recipeSelected = new EventEmitter<Recipe>();
 
   private recipes: Recipe[] = [
     new Recipe(
@@ -26,7 +24,7 @@ export class RecipeService implements OnInit {
     new Recipe(
       'Cheesy Enchiladas',
       'Tacos dorados called flautas, or taquitos, for which the tortillas are filled with pre-cooked shredded chicken, beef or barbacoa, rolled into an elongated cylinder and deep-fried until crisp.',
-      'https://c1.peakpx.com/wallpaper/680/1003/801/taco-beef-mexican-food-wallpaper-preview.jpg',
+      'https://www.simplyrecipes.com/wp-content/uploads/2006/04/red-chili-chicken-enchiladas-horiz-b-1700.jpg',
       'Spicy Red Sauce Enchilads',
       [
         new Ingredient('Cheese', 2, 'Mexican Blend'),
