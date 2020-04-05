@@ -1,6 +1,6 @@
 <figure>
-  <img mat-card-img src="{{recipe.imagePath}}" alt="Delicious Tacos">
-  <figcaption>Delicious Cheesy Tacos</figcaption>
+  <img mat-card-img src="{{recipe.imagePath}}">
+  <figcaption>{{ recipe.imageCaption }}</figcaption>
 </figure>
 <article>
   <header>
@@ -13,7 +13,7 @@
   </div>
   <mat-card-content>{{recipe.description}}</mat-card-content>
   <mat-menu #recipes='matMenu'>
-    <a mat-menu-item>To Shopping List</a>
+    <a mat-menu-item (click)="goToShoppingList()">Add Ingredients to Shopping List</a>
     <a mat-menu-item>Edit Recipe</a>
     <a mat-menu-item>Delete Recipe</a>
   </mat-menu>

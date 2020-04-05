@@ -6,12 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent {
-  loadedNav = 'recipes';
+  // loadedNav = 'recipes';
 
   constructor() {}
 
-  onNav(navLink: string){
-    this.loadedNav = navLink;
-  }
+  // onNav(navLink: string){
+  //   this.loadedNav = navLink;
+  // }
 
 }

@@ -1,6 +1,6 @@
 @import '../../styles';
 
-nav{
+nav {
   background: $primary;
   position: relative;
   z-index: 5;
@@ -8,18 +8,28 @@ nav{
   align-items: center;
   flex-wrap: wrap;
   padding: .5em;
-    h1{
+    h1 {
       margin-left: 1.15em;
       margin-bottom: 0;
     }
-    .flex-spacer{
+    .flex-spacer {
       flex-grow: 1;
       -webkit-box-flex: 1;
     }
-    menu{
+    menu {
       display: flex;
       margin-top: 0;
       margin-bottom: 0;
       padding-left: 1em;
+    }
+    a{
+      padding: 0;
+      margin: 0 1.15em;
+    }
+    a.active{
+      border-bottom: 2px solid $active;
+    }
+    mat-icon {
+      margin: 0;
     }
 }

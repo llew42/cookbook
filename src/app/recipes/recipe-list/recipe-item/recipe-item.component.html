@@ -1,11 +1,11 @@
-<a (click)="recipeClicked()"><mat-card class="recipe-card">
+<mat-card tabindex="1" class="recipe-card" [routerLink]="[index]">
   <mat-card-header>
-  <mat-card-title>{{recipe.name}}</mat-card-title>
+  <mat-card-title>{{recipe.name | uppercase}}</mat-card-title>
   </mat-card-header>
   <figure>
-    <img mat-card-img src="{{recipe.imagePath}}" alt="Delicious Tacos">
-    <figcaption>Delicious Cheesy Tacos</figcaption>
-    <mat-card-content>{{recipe.description}}</mat-card-content>
+    <img mat-card-img src="{{recipe.imagePath}}" >
+    <figcaption>{{recipe.imageCaption}}</figcaption>
   </figure>
+  <mat-card-content>{{recipe.description}}</mat-card-content>
 </mat-card>
-</a>
+

@@ -1,8 +1,8 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { async } from '@angular/core/testing';
+import { MatMenuTrigger } from '@angular/material/menu';
 
 @Component({
   selector: 'app-navbar',
@@ -10,10 +10,7 @@ import { async } from '@angular/core/testing';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  recipeList = false;
-  isMenuOpen = false;
-
-  @Output() navSelected = new EventEmitter<string>();
+  @ViewChild(MatMenuTrigger) recipes: MatMenuTrigger;
 
   isSmall$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Small)
     .pipe(
@@ -32,12 +29,8 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onRecipesToggle() {
-    this.recipeList = !this.recipeList;
-  }
-
-  onSelect(feature: string){
-    this.navSelected.emit(feature);
+  onMenuOpen() {
+    this.recipes.openMenu();
   }
 
 }

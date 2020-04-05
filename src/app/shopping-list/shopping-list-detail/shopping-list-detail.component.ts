@@ -10,6 +10,7 @@ import { ShoppingListService } from '../shopping-list.service';
 export class ShoppingListDetailComponent implements OnInit {
   @ViewChild('nameInput') nameInputRef: ElementRef;
   @ViewChild('amountInput') amountInputRef: ElementRef;
+  @ViewChild('notesInput') notesInputRef: ElementRef;
   // category = {
   //   name: ['Vegetable', 'Fruit', 'Bakery', 'Dairy', 'Meat', 'Canned Goods', 'Desserts', 'Cookies', 'Cereal']
   // }
@@ -17,12 +18,14 @@ export class ShoppingListDetailComponent implements OnInit {
   constructor(private shoppingListService: ShoppingListService) { }
 
   ngOnInit(): void {
+
   }
 
   onAddIngredient(){
     const name = this.nameInputRef.nativeElement.value
     const amount = this.amountInputRef.nativeElement.value
-    const newIngredient = new Ingredient(name, amount);
+    const notes = this.notesInputRef.nativeElement.value
+    const newIngredient = new Ingredient(name, amount, notes);
     this.shoppingListService.addIngredient(newIngredient);
   }
 

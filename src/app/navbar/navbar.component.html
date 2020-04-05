@@ -2,10 +2,23 @@
   <h1>Cookbook</h1>
   <div class="flex-spacer"></div>
   <menu>
-    <a mat-menu-item [matMenuTriggerFor]='recipes' (click)="onSelect('recipes')">Recipes</a>
-    <a mat-menu-item (click)="onSelect('shopping-list')">Shopping List</a>
+    <a mat-menu-item [matMenuTriggerFor]='recipes' [routerLink]="['recipes']" routerLinkActive="active">Recipes
+      <mat-icon>expand_more</mat-icon>
+    </a>
+    <a mat-menu-item [routerLink]="['shopping-list']" routerLinkActive="active">Shopping List</a>
+    <a mat-menu-item [routerLink]="['manage']" routerLinkActive="active" [matMenuTriggerFor]='manage'>Manage
+      <mat-icon>expand_more</mat-icon>
+    </a>
   </menu>
   <mat-menu #recipes='matMenu'>
-    <a mat-menu-item>Recipe List</a>
+    <ng-template matMenuContent>
+      <a mat-menu-item>Recipe List</a>
+    </ng-template>
+  </mat-menu>
+  <mat-menu #manage='matMenu'>
+    <ng-template matMenuContent>
+      <a mat-menu-item>Save</a>
+      <a mat-menu-item>Fetch</a>
+    </ng-template>
   </mat-menu>
 </nav>
