@@ -1,6 +1,7 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Ingredient } from 'src/app/models/ingredient.model';
 import { ShoppingListService } from '../shopping-list.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-shopping-list-detail',
@@ -8,12 +9,10 @@ import { ShoppingListService } from '../shopping-list.service';
   styleUrls: ['./shopping-list-detail.component.scss']
 })
 export class ShoppingListDetailComponent implements OnInit {
-  @ViewChild('nameInput') nameInputRef: ElementRef;
-  @ViewChild('amountInput') amountInputRef: ElementRef;
-  @ViewChild('notesInput') notesInputRef: ElementRef;
-  // category = {
-  //   name: ['Vegetable', 'Fruit', 'Bakery', 'Dairy', 'Meat', 'Canned Goods', 'Desserts', 'Cookies', 'Cereal']
-  // }
+  name: '';
+  amount: null;
+  note: ''
+  submitted = false;
 
   constructor(private shoppingListService: ShoppingListService) { }
 
@@ -21,12 +20,13 @@ export class ShoppingListDetailComponent implements OnInit {
 
   }
 
-  onAddIngredient(){
-    const name = this.nameInputRef.nativeElement.value
-    const amount = this.amountInputRef.nativeElement.value
-    const notes = this.notesInputRef.nativeElement.value
-    const newIngredient = new Ingredient(name, amount, notes);
+  onSubmit(form: NgForm) {
+    this.submitted = true;
+    const value = form.value;
+    const newIngredient = new Ingredient(value.name, value.amount, value.note)
     this.shoppingListService.addIngredient(newIngredient);
+
+    form.resetForm();
   }
 
 }
