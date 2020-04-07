@@ -15,7 +15,7 @@
   <mat-menu #recipes='matMenu'>
     <a mat-menu-item (click)="goToShoppingList()">Add Ingredients to Shopping List</a>
     <a mat-menu-item [routerLink]="['edit']">Edit Recipe</a>
-    <a mat-menu-item>Delete Recipe</a>
+    <a mat-menu-item (click)="onDelete()">Delete Recipe</a>
   </mat-menu>
   <ul>
     <li *ngFor="let ingredient of recipe.ingredients">{{ ingredient.name }} - {{ ingredient.amount }}</li>

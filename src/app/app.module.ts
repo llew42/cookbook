@@ -18,7 +18,7 @@ import { ShoppingListService } from './shopping-list/shopping-list.service';
 // MODULES
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -66,7 +66,8 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [ShoppingListService],
   bootstrap: [AppComponent]

@@ -1,25 +1,24 @@
 <!-- <div class="column"> -->
 <h1 *ngIf="edit">{{ edit ? 'Edit Recipe Details' : 'New Recipe Details'}}</h1>
-<form (ngSubmit)="onSubmit()" #recipeForm="ngForm">
+<form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
   <mat-form-field>
     <mat-label>Title</mat-label>
     <input
-      type="text"
       matInput
-      name="title"
-      ngModel
+      formControlName="name"
       required
     >
   </mat-form-field>
 
   <mat-form-field>
     <textarea
-      type="text"
       matInput
-      name="description"
-      ngModel
+      formControlName="description"
       required
-      rows="1"
+      cdkAutoSizeMinRows="1"
+      cdkAutosizeMaxRows="8"
+      cdkTextareaAutosize
+      #autosize="cdkTextareaAutosize"
     >
     </textarea>
     <mat-label>Description</mat-label>
@@ -28,16 +27,15 @@
   <mat-form-field>
     <mat-label>Image URL</mat-label>
     <input
-      type="text"
       matInput
-      name="imagePath"
-      ngModel
+      formControlName="imagePath"
       required
+      #imagePath
     >
   </mat-form-field>
   <div class="lightbox">
     <figure>
-      <img src="">
+      <img [src]="imagePath.value">
       <figcaption></figcaption>
     </figure>
   </div>
@@ -47,52 +45,52 @@
     <input
       type="text"
       matInput
-      name="iamgeCaption"
-      ngModel
-      required
+      formControlName="imageCaption"
     >
   </mat-form-field>
 
-  <div class="column">
+  <div class="column" formArrayName="ingredients">
     <h1 *ngIf="edit">
-      {{ edit ? 'Edit Ingredients' : 'Add Ingredients'}}
+      {{ edit ? 'Edit Ingredients' : 'Add Ingredients' }}
     </h1>
-    <mat-form-field>
-      <mat-label>Name</mat-label>
-      <input
-        type="text"
-        matInput
-        name="name"
-        ngModel
-        required
+    <div class="ingredientList" *ngFor="let ingredientCtrl of controls; let i = index" [formGroupName]="i">
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="name"
+          required
+        >
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Amount</mat-label>
+        <input
+          type="number"
+          matInput
+          formControlName="amount"
+          required
+          pattern="^[1-9]+[0-9]*$"
+        >
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Notes</mat-label>
+        <textarea
+          matInput
+          formControlName="note"
+        ></textarea>
+      </mat-form-field>
+      <button
+        class="deleteIngredient"
+        mat-mini-fab
+        color="primary"
+        type="button"
+        (click)="onDeleteIngredient(i)"
       >
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Amount</mat-label>
-      <input
-        type="number"
-        matInput
-        name="amount"
-        ngModel
-        required
-        pattern="^[1-9]+[0-9]*$"
-      >
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Notes</mat-label>
-      <textarea
-        matInput
-        name="note"
-        ngModel
-      ></textarea>
-    </mat-form-field>
-    <button
-      mat-mini-fab
-      color="warn"
-      type="button"
-    >
       X
     </button>
+  </div>
+  <button type="button" mat-button (click)="onAddIngredient()">Add Ingredient</button>
     <div>
       <button
         type="submit"
@@ -100,12 +98,13 @@
         mat-raised-button
         [disabled]="!recipeForm.valid"
       >
-        Update
+        Save
       </button>
       <button
         type="button"
         mat-button
         color="primary"
+        (click)="onCancel()"
       >
         Cancel
       </button>
