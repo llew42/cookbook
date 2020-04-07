@@ -1,0 +1,19 @@
+@import '../../styles';
+
+.columns {
+  padding: 3em;
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 0 0 -.5em;
+}
+
+.column {
+  flex:1 0 20%;
+  min-width: 275px;
+  margin: 5em 5em 0;
+}
+
+mat-list-item:hover {
+  cursor: pointer;
+  background: $primary;
+}

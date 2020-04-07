@@ -1,10 +1,12 @@
-@use '../../../styles';
+@import '../../../styles';
 
 .form-container {
   display: flex;
   flex-direction: column;
 }
 
-.form-container > * {
-  width: 35vw;
+form {
+  display: flex;
+  flex-flow: column wrap;
+  flex-grow: 0.5;
 }

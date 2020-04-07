@@ -1,0 +1,26 @@
+@import '../../../styles';
+
+form {
+  display: flex;
+  flex-flow: column wrap;
+  max-width: 40vw;
+  textarea {
+    resize: none;
+    
+  }
+  mat-label {
+    vertical-align: bottom;
+  }
+}
+.column {
+  display: flex;
+  flex-flow: column wrap;
+  h1 {
+    margin-top: 1.5em;
+  }
+  button {
+    padding: .15em;
+    margin-bottom: 2em;
+    align-self: flex-end;
+  }
+}

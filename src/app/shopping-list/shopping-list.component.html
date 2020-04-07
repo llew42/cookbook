@@ -6,15 +6,15 @@
   <div class="column">
     <mat-divider></mat-divider>
     <mat-list>
-      <mat-list-item
-        *ngFor="let ingredient of ingredients"
-        (click)="onEdit()"
+    <mat-list-item
+      *ngFor="let ingredient of ingredients; let i = index"
+      (click)="onEdit(i)"
       >
-        <span>
-          {{ingredient.name}} ({{ingredient.amount}})
-          <span *ngIf="ingredient.notes">| {{ingredient.notes}}</span>
+        <span>{{ingredient.name}} ({{ingredient.amount}})
+          <span *ngIf="ingredient.notes"> | {{ingredient.notes}}</span>
         </span>
       </mat-list-item>
     </mat-list>
   </div>
 </div>
+

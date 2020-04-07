@@ -13,12 +13,21 @@ export class RecipeEditComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.editRecipe();
+  }
+
+  editRecipe() {
     this.route.params
       .subscribe(
         (params: ParamMap) => {
           this.id = +params['id'];
           this.edit = params['id'] != null;
         }
-      )
+      );
   }
+
+  onSubmit() {
+
+  }
+
 }
