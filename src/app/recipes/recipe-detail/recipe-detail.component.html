@@ -1,5 +1,8 @@
 <figure>
-  <img mat-card-img src="{{recipe.imagePath}}">
+  <img
+    mat-card-img
+    src="{{recipe.imagePath}}"
+  >
   <figcaption>{{ recipe.imageCaption }}</figcaption>
 </figure>
 <article>
@@ -7,17 +10,39 @@
     <h1>Your {{recipe.name}} Details</h1>
   </header>
   <div class="recipe-dropdown">
-    <button mat-flat-button color="primary" [matMenuTriggerFor]='recipes'>Manage Recipe
+    <button
+      mat-flat-button
+      color="primary"
+      [matMenuTriggerFor]='recipes'
+    >
+      Manage Recipe
       <mat-icon>expand_more</mat-icon>
     </button>
   </div>
   <mat-card-content>{{recipe.description}}</mat-card-content>
   <mat-menu #recipes='matMenu'>
-    <a mat-menu-item (click)="goToShoppingList()">Add Ingredients to Shopping List</a>
-    <a mat-menu-item [routerLink]="['edit']">Edit Recipe</a>
-    <a mat-menu-item (click)="onDelete()">Delete Recipe</a>
+    <a
+      mat-menu-item
+      (click)="goToShoppingList()"
+    >
+      Add Ingredients to Shopping List
+    </a>
+    <a
+      mat-menu-item
+      [routerLink]="['edit']"
+    >
+      Edit Recipe
+    </a>
+    <a
+      mat-menu-item
+      (click)="onDelete()"
+    >
+      Delete Recipe
+    </a>
   </mat-menu>
   <ul>
-    <li *ngFor="let ingredient of recipe.ingredients">{{ ingredient.name }} - {{ ingredient.amount }}</li>
+    <li *ngFor="let ingredient of recipe.ingredients">
+      {{ ingredient.name }} - {{ ingredient.amount }}
+    </li>
   </ul>
 </article>

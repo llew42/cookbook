@@ -39,4 +39,8 @@ export class NavbarComponent implements OnInit {
   onSaveRecipes() {
     this.dataStorageService.storeRecipes();
   }
+
+  onFetchRecipes() {
+    this.dataStorageService.fetchRecipes().subscribe();
+  }
 }

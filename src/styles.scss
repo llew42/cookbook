@@ -1,13 +1,24 @@
 @import '@angular/material/prebuilt-themes/pink-bluegrey.css';
 @import './sass/base';
 @import './sass/button';
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
 .columns {
   padding: 2.5em;
 }

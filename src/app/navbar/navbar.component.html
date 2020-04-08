@@ -20,7 +20,6 @@
     </a>
     <a
       mat-menu-item
-      [routerLink]="['manage']"
       routerLinkActive="active"
       [matMenuTriggerFor]='manage'
     >
@@ -41,7 +40,12 @@
       >
         Save
       </a>
-      <a mat-menu-item>Fetch</a>
+      <a
+        mat-menu-item
+        (click)="onFetchRecipes()"
+      >
+        Fetch
+      </a>
     </ng-template>
   </mat-menu>
 </nav>
