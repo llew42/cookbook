@@ -2,11 +2,29 @@
   <h1>Cookbook</h1>
   <div class="flex-spacer"></div>
   <menu>
-    <a mat-menu-item [matMenuTriggerFor]='recipes' [routerLink]="['recipes']" routerLinkActive="active">Recipes
+    <a
+      mat-menu-item
+      [matMenuTriggerFor]='recipes'
+      [routerLink]="['recipes']"
+      routerLinkActive="active"
+    >
+      Recipes
       <mat-icon>expand_more</mat-icon>
     </a>
-    <a mat-menu-item [routerLink]="['shopping-list']" routerLinkActive="active">Shopping List</a>
-    <a mat-menu-item [routerLink]="['manage']" routerLinkActive="active" [matMenuTriggerFor]='manage'>Manage
+    <a
+      mat-menu-item
+      [routerLink]="['shopping-list']"
+      routerLinkActive="active"
+    >
+      Shopping List
+    </a>
+    <a
+      mat-menu-item
+      [routerLink]="['manage']"
+      routerLinkActive="active"
+      [matMenuTriggerFor]='manage'
+    >
+      Manage
       <mat-icon>expand_more</mat-icon>
     </a>
   </menu>
@@ -17,7 +35,12 @@
   </mat-menu>
   <mat-menu #manage='matMenu'>
     <ng-template matMenuContent>
-      <a mat-menu-item>Save</a>
+      <a
+        mat-menu-item
+        (click)="onSaveRecipes()"
+      >
+        Save
+      </a>
       <a mat-menu-item>Fetch</a>
     </ng-template>
   </mat-menu>
