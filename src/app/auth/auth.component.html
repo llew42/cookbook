@@ -1,0 +1,73 @@
+<div class="form-container">
+  <p
+    class="auth-error"
+    *ngIf="error"
+  >
+    {{ error }}
+  </p>
+  <app-progress-spinner *ngIf="isLoading"></app-progress-spinner>
+  <form
+    [formGroup]="authForm"
+    (ngSubmit)="onSubmit(authForm, formDirective)"
+    #formDirective="ngForm"
+    *ngIf="!isLoading"
+  >
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        id="email"
+        required
+        email
+        type="email"
+        formControlName="email"
+      >
+      <mat-error>Please enter a valid email</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        id="password"
+        required
+        [type]="hide ? 'password' : 'text'"
+        formControlName="password"
+        minlength="6"
+      >
+      <mat-icon
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        {{hide ? 'visibility_off' : 'visibility'}}
+      </mat-icon>
+      <mat-hint *ngIf="!isLogin">
+        Password must contain an uppercase and number
+      </mat-hint>
+      <mat-error>Please enter a valid password</mat-error>
+    </mat-form-field>
+    <br>
+    <div>
+      <button
+        type="submit"
+        color="primary"
+        mat-raised-button
+        [disabled]="!authForm.valid"
+      >
+        {{ isLogin ? 'Login' : 'Signup' }}
+      </button>
+      <button
+        mat-button
+        type="button"
+        color="info"
+        [matTooltip]="message.value"
+        matTooltipPosition="below"
+        (click)="onSwitchMode()"
+      >
+        {{ isLogin ? 'Signup' : 'Login' }}
+      </button>
+    </div>
+  </form>
+</div>

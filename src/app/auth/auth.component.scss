@@ -1,0 +1,28 @@
+@import '../../styles.scss';
+
+app-progress-spinner {
+  align-self: center;
+  margin-top: 2em;
+}
+
+.mat-form-field {
+  display: block;
+}
+
+.mat-icon:hover {
+  cursor: pointer;
+}
+
+;
+
+.form-container {
+  display: flex;
+  flex-flow: column wrap;
+  padding: 5em;
+  height: 84vh;
+
+  div {
+    padding-top: 1.5em;
+  }
+
+}

@@ -26,6 +26,13 @@
       Manage
       <mat-icon>expand_more</mat-icon>
     </a>
+    <a
+      mat-menu-item
+      [routerLink]="['signin']"
+      routerLinkActive="active"
+    >
+      Signup
+    </a>
   </menu>
   <mat-menu #recipes='matMenu'>
     <ng-template matMenuContent>
