@@ -1,17 +1,20 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { DataStorageService } from '../shared/data-storage.service';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
   @ViewChild(MatMenuTrigger) recipes: MatMenuTrigger;
+  private userSub: Subscription;
+  isAuthenticated: boolean = false;
 
   // isSmall$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Small)
   //   .pipe(
@@ -27,10 +30,17 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private dataStorageService: DataStorageService
+    private dataStorageService: DataStorageService,
+    private authService: AuthService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userSub = this.authService.user.subscribe((user) => {
+      this.isAuthenticated = !!user;
+      console.log(!user);
+      console.log('Not not ', !!user);
+    });
+  }
 
   onMenuOpen() {
     this.recipes.openMenu();
@@ -42,5 +52,9 @@ export class NavbarComponent implements OnInit {
 
   onFetchRecipes() {
     this.dataStorageService.fetchRecipes().subscribe();
+  }
+
+  ngOnDestroy() {
+    this.userSub.unsubscribe();
   }
 }

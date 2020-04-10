@@ -2,14 +2,14 @@ import { Injectable, OnInit } from '@angular/core';
 import { AuthResponseData } from './auth.model';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
-import { throwError, Subject } from 'rxjs';
+import { throwError, BehaviorSubject } from 'rxjs';
 import { User } from './user.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService implements OnInit {
-  user = new Subject<User>();
+  user = new BehaviorSubject<User>(null);
 
   constructor(private http: HttpClient) {}
 
@@ -18,7 +18,7 @@ export class AuthService implements OnInit {
   signUp(email: string, password: string) {
     return this.http
       .post<AuthResponseData>(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key= AIzaSyBfHSnFKE6YoOFUc3S_xqXNc1Ss--Vdejw ',
+        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=',
         { email: email, password: password, returnSecureToken: true }
       )
       .pipe(
@@ -37,7 +37,7 @@ export class AuthService implements OnInit {
   login(email: string, password: string) {
     return this.http
       .post<AuthResponseData>(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key= AIzaSyBfHSnFKE6YoOFUc3S_xqXNc1Ss--Vdejw',
+        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=',
         { email: email, password: password, returnSecureToken: true }
       )
       .pipe(
