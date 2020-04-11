@@ -6,7 +6,7 @@ import { ShoppingListDetailComponent } from '../shopping-list/shopping-list-deta
 
 const routes: Routes = [
   {
-    path: 'shopping-list',
+    path: '',
     component: ShoppingListComponent,
     canActivate: [AuthGuard],
     children: [
