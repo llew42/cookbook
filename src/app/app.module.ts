@@ -1,4 +1,5 @@
 // COMPONENTS
+import { AlertComponent } from './shared/alert/alert.component';
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
 import { FooterComponent } from './footer/footer.component';
@@ -22,7 +23,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -37,8 +38,17 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgModule } from '@angular/core';
 
+// SERVICES
+import { AuthInterceptorService } from './auth/auth-interceptor.service';
+import {
+  MatDialogModule,
+  MAT_DIALOG_DATA,
+  MatDialogRef,
+} from '@angular/material/dialog';
+
 @NgModule({
   declarations: [
+    AlertComponent,
     AppComponent,
     AuthComponent,
     DropdownDirective,
@@ -64,6 +74,7 @@ import { NgModule } from '@angular/core';
     LayoutModule,
     MatButtonModule,
     MatCardModule,
+    MatDialogModule,
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
@@ -75,7 +86,24 @@ import { NgModule } from '@angular/core';
     MatTooltipModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MatDialogRef,
+      useClass: AlertComponent,
+      multi: true,
+    },
+    {
+      provide: MAT_DIALOG_DATA,
+      useClass: AlertComponent,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
+  entryComponents: [AlertComponent],
 })
 export class AppModule {}

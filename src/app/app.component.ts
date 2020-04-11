@@ -1,15 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from './auth/auth.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  loadedNav = 'recipes';
-  title = 'cookbook';
+export class AppComponent implements OnInit {
+  constructor(private authService: AuthService) {}
 
-  onNav(navLink: string){
-    this.loadedNav = navLink;
+  ngOnInit() {
+    this.authService.autoLogin();
   }
 }

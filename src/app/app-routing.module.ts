@@ -9,6 +9,7 @@ import { RecipesResolverService } from './recipes/recipes-resolver.service';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingListDetailComponent } from './shopping-list/shopping-list-detail/shopping-list-detail.component';
+import { AuthGuard } from './auth/auth.guard';
 // import { MainComponent } from './main/main.component';
 
 const appRoutes: Routes = [
@@ -20,6 +21,7 @@ const appRoutes: Routes = [
   {
     path: 'recipes',
     component: RecipesComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -44,6 +46,7 @@ const appRoutes: Routes = [
   {
     path: 'shopping-list',
     component: ShoppingListComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'details',

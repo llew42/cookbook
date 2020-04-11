@@ -4,14 +4,16 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { throwError, BehaviorSubject } from 'rxjs';
 import { User } from './user.model';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService implements OnInit {
   user = new BehaviorSubject<User>(null);
+  private tokenExp: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit() {}
 
@@ -53,6 +55,48 @@ export class AuthService implements OnInit {
       );
   }
 
+  autoLogin() {
+    const user: {
+      email: string;
+      id: string;
+      _token: string;
+      _tokenExpirationDate: string;
+    } = JSON.parse(localStorage.getItem('user'));
+
+    if (!user) {
+      return;
+    }
+    const loadedUser = new User(
+      user.email,
+      user.id,
+      user._token,
+      new Date(user._tokenExpirationDate)
+    );
+
+    if (loadedUser.token) {
+      this.user.next(loadedUser);
+      const expirationDuration =
+        new Date(user._tokenExpirationDate).getTime() - new Date().getTime();
+      this.autoLogout(expirationDuration);
+    }
+  }
+
+  autoLogout(expirationDuration: number) {
+    this.tokenExp = setTimeout(() => {
+      this.logout();
+    }, expirationDuration);
+  }
+
+  logout() {
+    this.user.next(null);
+    this.router.navigate(['/signin']);
+    localStorage.removeItem('user');
+    if (this.tokenExp) {
+      clearTimeout(this.tokenExp);
+    }
+    this.tokenExp = null;
+  }
+
   private handleAuth(
     email: string,
     userId: string,
@@ -62,6 +106,8 @@ export class AuthService implements OnInit {
     const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
     const user = new User(email, userId, token, expirationDate);
     this.user.next(user);
+    localStorage.setItem('user', JSON.stringify(user));
+    this.autoLogout(expiresIn * 1000);
   }
 
   private handleError(errorRes: HttpErrorResponse) {

@@ -1,0 +1,27 @@
+@import '../../../styles';
+
+mat-dialog-container {
+  .mat-dialog-container {
+    background: $primary;
+  }
+}
+
+.flex-spacer {
+  flex-grow: 1;
+  -webkit-box-flex: 1;
+}
+
+.mat-dialog-content {
+  margin-top: .5em;
+  padding-left: 1em;
+}
+
+.mat-dialog-actions {
+  align-content: baseline;
+  padding: 0;
+}
+
+.alert-modal {
+  display: flex;
+  flex-flow: row wrap;
+}

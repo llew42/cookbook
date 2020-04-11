@@ -29,6 +29,22 @@
       Manage
       <mat-icon>expand_more</mat-icon>
     </a>
+    <mat-menu #manage='matMenu'>
+      <ng-template matMenuContent>
+        <a
+          mat-menu-item
+          (click)="onSaveRecipes()"
+        >
+          Save
+        </a>
+        <a
+          mat-menu-item
+          (click)="onFetchRecipes()"
+        >
+          Fetch
+        </a>
+      </ng-template>
+    </mat-menu>
     <a
       mat-menu-item
       [routerLink]="['signin']"
@@ -39,9 +55,9 @@
     </a>
     <a
       mat-menu-item
-      [routerLink]="['/signin']"
       routerLinkActive="router-link-active"
       *ngIf="isAuthenticated"
+      (click)="logout()"
     >
       Logout
     </a>
@@ -49,22 +65,6 @@
   <mat-menu #recipes='matMenu'>
     <ng-template matMenuContent>
       <a mat-menu-item>Recipe List</a>
-    </ng-template>
-  </mat-menu>
-  <mat-menu #manage='matMenu'>
-    <ng-template matMenuContent>
-      <a
-        mat-menu-item
-        (click)="onSaveRecipes()"
-      >
-        Save
-      </a>
-      <a
-        mat-menu-item
-        (click)="onFetchRecipes()"
-      >
-        Fetch
-      </a>
     </ng-template>
   </mat-menu>
 </nav>

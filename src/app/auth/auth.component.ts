@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -9,6 +9,8 @@ import { AuthService } from './auth.service';
 import { Observable } from 'rxjs';
 import { AuthResponseData } from './auth.model';
 import { Router } from '@angular/router';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { AlertComponent } from '../shared/alert/alert.component';
 
 @Component({
   selector: 'app-auth',
@@ -23,12 +25,15 @@ export class AuthComponent implements OnInit {
   authForm: FormGroup;
   hide = true;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.initForm();
     this.isLogin = false;
-    console.log('Auth Form ', this.authForm.value);
   }
 
   onSwitchMode(): void {
@@ -41,7 +46,7 @@ export class AuthComponent implements OnInit {
     }
   }
 
-  onSubmit(formData: FormGroup, formDirective: FormGroupDirective): void {
+  onLogin(formData: FormGroup, formDirective: FormGroupDirective): void {
     if (!formData.valid) {
       return;
     }
@@ -65,12 +70,26 @@ export class AuthComponent implements OnInit {
       },
       (errorMessage) => {
         this.error = errorMessage;
+        this.openDialog();
         this.isLoading = false;
       }
     );
 
     formDirective.resetForm();
     this.authForm.reset();
+  }
+
+  openDialog() {
+    const dialogRef: MatDialogRef<AlertComponent> = this.dialog.open(
+      AlertComponent,
+      {
+        width: '325px',
+        data: { error: this.error },
+        position: { top: '200px' },
+      }
+    );
+
+    dialogRef.afterClosed().subscribe((data) => console.log(`Error ${data}`));
   }
 
   private initForm(): void {

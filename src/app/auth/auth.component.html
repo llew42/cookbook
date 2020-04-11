@@ -1,14 +1,8 @@
 <div class="form-container">
-  <p
-    class="auth-error"
-    *ngIf="error"
-  >
-    {{ error }}
-  </p>
   <app-progress-spinner *ngIf="isLoading"></app-progress-spinner>
   <form
     [formGroup]="authForm"
-    (ngSubmit)="onSubmit(authForm, formDirective)"
+    (ngSubmit)="onLogin(authForm, formDirective)"
     #formDirective="ngForm"
     *ngIf="!isLoading"
   >

@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable, Subscription } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { Subscription } from 'rxjs';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { DataStorageService } from '../shared/data-storage.service';
 import { AuthService } from '../auth/auth.service';
@@ -37,8 +36,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.userSub = this.authService.user.subscribe((user) => {
       this.isAuthenticated = !!user;
-      console.log(!user);
-      console.log('Not not ', !!user);
     });
   }
 
@@ -52,6 +49,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   onFetchRecipes() {
     this.dataStorageService.fetchRecipes().subscribe();
+  }
+
+  logout() {
+    this.authService.logout();
   }
 
   ngOnDestroy() {
