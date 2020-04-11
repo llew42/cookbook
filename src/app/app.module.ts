@@ -6,12 +6,6 @@ import { FooterComponent } from './footer/footer.component';
 import { MainComponent } from './main/main.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProgressSpinner } from './shared/progress-spinner/progress-spinner.component';
-import { RecipesComponent } from './recipes/recipes.component';
-import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
-import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
-import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-item.component';
-import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
-import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingListDetailComponent } from './shopping-list/shopping-list-detail/shopping-list-detail.component';
 
@@ -37,6 +31,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgModule } from '@angular/core';
+import { RecipesModule } from './recipes/recipes.module';
 
 // SERVICES
 import { AuthInterceptorService } from './auth/auth-interceptor.service';
@@ -56,12 +51,6 @@ import {
     MainComponent,
     NavbarComponent,
     ProgressSpinner,
-    RecipesComponent,
-    RecipeDetailComponent,
-    RecipeEditComponent,
-    RecipeItemComponent,
-    RecipeListComponent,
-    RecipeStartComponent,
     ShoppingListComponent,
     ShoppingListDetailComponent,
   ],
@@ -85,6 +74,7 @@ import {
     MatSidenavModule,
     MatTooltipModule,
     ReactiveFormsModule,
+    RecipesModule,
   ],
   providers: [
     {
@@ -104,6 +94,5 @@ import {
     },
   ],
   bootstrap: [AppComponent],
-  entryComponents: [AlertComponent],
 })
 export class AppModule {}

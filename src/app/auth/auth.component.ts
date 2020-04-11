@@ -69,27 +69,25 @@ export class AuthComponent implements OnInit {
         this.router.navigate(['/recipes']);
       },
       (errorMessage) => {
-        this.error = errorMessage;
-        this.openDialog();
+        // this.error = errorMessage;
+        this.displayError(errorMessage);
         this.isLoading = false;
       }
     );
-
     formDirective.resetForm();
     this.authForm.reset();
   }
 
-  openDialog() {
+  displayError(message: string) {
     const dialogRef: MatDialogRef<AlertComponent> = this.dialog.open(
       AlertComponent,
       {
-        width: '325px',
-        data: { error: this.error },
+        width: '415px',
+        height: '81px',
+        data: { error: message },
         position: { top: '200px' },
       }
     );
-
-    dialogRef.afterClosed().subscribe((data) => console.log(`Error ${data}`));
   }
 
   private initForm(): void {
