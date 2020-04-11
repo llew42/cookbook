@@ -1,7 +1,11 @@
-<app-navbar class="mat-elevation-z8"></app-navbar>
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav-content>
-    <router-outlet></router-outlet>
-    <app-footer></app-footer>
+<mat-sidenav-container>
+  <mat-sidenav-content class="sidenav-container">
+    <div class="content-wrapper">
+      <app-navbar class="mat-elevation-z5"></app-navbar>
+      <main class="main-content">
+        <router-outlet></router-outlet>
+      </main>
+      <app-footer></app-footer>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

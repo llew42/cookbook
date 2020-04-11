@@ -3,22 +3,17 @@ import { Ingredient } from '../models/ingredient.model';
 import { Subject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class ShoppingListService implements OnInit{
+export class ShoppingListService implements OnInit {
   ingredientsChanged = new Subject<Ingredient[]>();
   startedEditing = new Subject<number>();
 
-  private ingredients: Ingredient[] = [
-    new Ingredient('Apples', 5, 'Granny smith'),
-    new Ingredient('Strawberries', 5, 'Organic'),
-  ];
+  private ingredients: Ingredient[] = [];
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 
   getIngredients() {
     return this.ingredients.slice();
@@ -28,9 +23,9 @@ export class ShoppingListService implements OnInit{
     return this.ingredients[index];
   }
 
-  addIngredient(ingredient: Ingredient){
+  addIngredient(ingredient: Ingredient) {
     this.ingredients.push(ingredient);
-    this.ingredientsChanged. next(this.ingredients.slice());
+    this.ingredientsChanged.next(this.ingredients.slice());
   }
 
   addIngredients(ingredients: Ingredient[]) {
@@ -47,5 +42,4 @@ export class ShoppingListService implements OnInit{
     this.ingredients.splice(index, 1);
     this.ingredientsChanged.next(this.ingredients.slice());
   }
-
 }

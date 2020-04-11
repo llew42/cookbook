@@ -2,14 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AuthComponent } from './auth/auth.component';
-import { RecipesComponent } from './recipes/recipes.component';
-import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
-import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
-import { RecipesResolverService } from './recipes/recipes-resolver.service';
-import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
-import { ShoppingListComponent } from './shopping-list/shopping-list.component';
-import { ShoppingListDetailComponent } from './shopping-list/shopping-list-detail/shopping-list-detail.component';
-import { AuthGuard } from './auth/auth.guard';
+
 // import { MainComponent } from './main/main.component';
 
 const appRoutes: Routes = [
@@ -20,43 +13,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'recipes',
-    component: RecipesComponent,
-    canActivate: [AuthGuard],
-    children: [
-      {
-        path: '',
-        component: RecipeStartComponent,
-      },
-      {
-        path: 'new',
-        component: RecipeEditComponent,
-      },
-      {
-        path: ':id',
-        component: RecipeDetailComponent,
-        resolve: [RecipesResolverService],
-      },
-      {
-        path: ':id/edit',
-        component: RecipeEditComponent,
-        resolve: [RecipesResolverService],
-      },
-    ],
-  },
-  {
-    path: 'shopping-list',
-    component: ShoppingListComponent,
-    canActivate: [AuthGuard],
-    children: [
-      {
-        path: 'details',
-        component: ShoppingListDetailComponent,
-      },
-    ],
-  },
-  {
-    path: 'signin',
-    component: AuthComponent,
+    loadChildren: './recipes/recipes.module.ts',
   },
 ];
 
