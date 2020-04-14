@@ -1,11 +1,21 @@
-<mat-card tabindex="1" class="recipe-card" [routerLink]="[index]">
-  <mat-card-header>
-  <mat-card-title>{{recipe.name | uppercase}}</mat-card-title>
-  </mat-card-header>
-  <figure>
-    <img mat-card-img src="{{recipe.imagePath}}" >
-    <figcaption>{{recipe.imageCaption}}</figcaption>
-  </figure>
-  <mat-card-content>{{recipe.description}}</mat-card-content>
-</mat-card>
-
+<mat-list
+  tabindex="1"
+  class="recipe-card"
+  [routerLink]="[index]"
+  class="recipe-list"
+>
+  <mat-list-item height="auto">
+    <h1 matLine>{{recipe.name | uppercase}}</h1>
+    <figure class="lightbox">
+      <img
+        src="{{recipe.imagePath}}"
+        class="right"
+        width="200"
+        height="200"
+      >
+      <figcaption>{{recipe.imageCaption}}</figcaption>
+    </figure>
+    <div mat-line>{{recipe.description}}</div>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+</mat-list>

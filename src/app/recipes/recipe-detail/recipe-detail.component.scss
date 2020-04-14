@@ -1,11 +1,34 @@
-.recipe-dropdown{
+article {
   display: flex;
-  flex-direction: row-reverse;
-}
-h1{
-  margin-bottom: .15em;
+  align-items: center;
+  justify-content: center;
+
+  mat-card-header {
+    align-items: flex-end;
+    padding: 1.5em 1.5em 0;
+
+    .flex-spacer {
+      flex-grow: 1;
+      -webkit-box-flex: 1;
+    }
+
+    .recipe-dropdown {
+      display: flex;
+      flex-direction: row-reverse;
+    }
+
+  }
 }
 
-button{
-  margin-bottom: .325em;
+.recipe-details {
+  padding: 1.5em;
+
+  h3 {
+    margin: 0;
+    padding-top: 1.25em;
+  }
+
+  ul {
+    margin-top: .75em;
+  }
 }

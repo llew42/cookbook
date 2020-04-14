@@ -1,19 +1,26 @@
-mat-card {
-  padding: 0;
+@import '../../../../styles';
+
+.recipe-list {
+  :hover {
+    cursor: pointer;
+    background: $primary;
+  }
+
+  .mat-list-item {
+    height: max-content;
+
+  }
 }
-mat-card-header {
-  padding: 1.5em 0 .5em 2.25em;
-}
-mat-card-title {
-  margin-left: -1em;
-}
+
 figure {
-  padding-bottom: 1.75em;
+  flex: 1;
 }
+
 figcaption {
   padding: 0 2.25em .5em 2.25em;
   font-style: italic;
 }
+
 mat-card-content {
   padding: 0 2.25em .5em 2.25em;
 }

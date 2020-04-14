@@ -13,7 +13,15 @@
   margin: 5em 5em 0;
 }
 
+mat-list {
+  margin: .25em 0 0 -1em;
+}
+
 mat-list-item:hover {
   cursor: pointer;
   background: $primary;
+}
+
+h1 {
+  margin-bottom: 1.3em;
 }
