@@ -13,7 +13,10 @@
       >
         <span>
           {{ingredient.name}} ({{ingredient.amount}})
-          <span *ngIf="ingredient.notes">| {{ingredient.notes}}</span>
+          <span *ngIf="ingredient.notes">
+            <br>
+            - {{ingredient.notes}}
+          </span>
         </span>
       </mat-list-item>
     </mat-list>

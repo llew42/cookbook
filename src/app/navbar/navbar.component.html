@@ -4,13 +4,11 @@
   <menu>
     <a
       mat-menu-item
-      [matMenuTriggerFor]='recipes'
       [routerLink]="['recipes']"
       routerLinkActive="active"
       *ngIf="isAuthenticated"
     >
       Recipes
-      <mat-icon>expand_more</mat-icon>
     </a>
     <a
       mat-menu-item
@@ -35,13 +33,13 @@
           mat-menu-item
           (click)="onSaveRecipes()"
         >
-          Save
+          Save Recipes
         </a>
         <a
           mat-menu-item
           (click)="onFetchRecipes()"
         >
-          Fetch
+          Get Recipes
         </a>
       </ng-template>
     </mat-menu>
@@ -62,9 +60,4 @@
       Logout
     </a>
   </menu>
-  <mat-menu #recipes='matMenu'>
-    <ng-template matMenuContent>
-      <a mat-menu-item>Recipe List</a>
-    </ng-template>
-  </mat-menu>
 </nav>
