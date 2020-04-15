@@ -1,7 +1,6 @@
 // COMPONENTS
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
-import { MainComponent } from './main/main.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
 // MODULES
@@ -17,7 +16,7 @@ import { StoreModule } from '@ngrx/store';
 import { shoppingListReducer } from './shopping-list/store/shopping-list.reducer';
 
 @NgModule({
-  declarations: [AppComponent, FooterComponent, MainComponent, NavbarComponent],
+  declarations: [AppComponent, FooterComponent, NavbarComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
