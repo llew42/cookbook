@@ -13,17 +13,20 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { NgModule } from '@angular/core';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core.module';
+import { StoreModule } from '@ngrx/store';
+import { shoppingListReducer } from './shopping-list/store/shopping-list.reducer';
 
 @NgModule({
   declarations: [AppComponent, FooterComponent, MainComponent, NavbarComponent],
   imports: [
-    AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
     CoreModule,
     HttpClientModule,
     LayoutModule,
     SharedModule,
+    StoreModule.forRoot({ shoppingList: shoppingListReducer }),
+    AppRoutingModule,
   ],
   bootstrap: [AppComponent],
 })
